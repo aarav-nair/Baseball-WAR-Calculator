@@ -1,0 +1,120 @@
+body {
+   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+   background-color: #f4f7f6;
+   color: #333;
+   display: flex;
+   justify-content: center;
+   padding: 20px;
+}
+
+.container {
+   background-color: #fff;
+   padding: 25px 40px;
+   border-radius: 10px;
+   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+   max-width: 600px;
+   width: 100%;
+}
+
+h1, h2 {
+   text-align: center;
+   color: #1a1a1a;
+}
+
+h2 {
+   border-bottom: 1px solid #eee;
+   padding-bottom: 10px;
+   margin-top: 20px;
+}
+
+.input-section .grid-container {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   gap: 15px;
+   align-items: center;
+}
+
+/* New Toggle Styles */
+.toggle-container {
+   grid-column: 1 / -1; /* Make the container span both columns */
+   display: flex;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   overflow: hidden;
+}
+
+.toggle-btn {
+   flex: 1;
+   padding: 8px;
+   text-align: center;
+   background-color: #f0f0f0;
+   color: #555;
+   cursor: pointer;
+   user-select: none;
+   transition: background-color 0.2s, color 0.2s;
+}
+
+.toggle-btn.active-toggle {
+   background-color: #007bff;
+   color: white;
+   font-weight: bold;
+}
+
+/* Container for the smart input to span both columns */
+.smart-input-container {
+   grid-column: 1 / -1;
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   gap: 15px;
+   align-items: center;
+}
+
+label {
+   font-weight: 500;
+}
+
+input[type="number"], select {
+   width: 100%;
+   padding: 8px;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   box-sizing: border-box;
+}
+
+button {
+   width: 100%;
+   padding: 12px;
+   background-color: #007bff;
+   color: white;
+   border: none;
+   border-radius: 5px;
+   font-size: 16px;
+   font-weight: bold;
+   cursor: pointer;
+   margin-top: 25px;
+   transition: background-color 0.2s;
+}
+
+button:hover {
+   background-color: #0056b3;
+}
+
+.results-section {
+   margin-top: 20px;
+   padding: 15px;
+   background-color: #e9f5ff;
+   border: 1px solid #b3d7ff;
+   border-radius: 5px;
+}
+
+.results-section p {
+   font-size: 18px;
+   margin: 10px 0;
+   display: flex;
+   justify-content: space-between;
+}
+
+.results-section span {
+   font-weight: bold;
+   color: #0056b3;
+}
