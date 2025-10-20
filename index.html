@@ -1,82 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>WAR Calculator</title>
-   <link rel="stylesheet" href="style.css">
-</head>
-<body>
-   <div class="container">
-      <h1>Baseball WAR Calculator</h1>
-      <form id="war-form">
-         <div class="input-section">
-               <h2>Hitting Stats</h2>
-               <div class="grid-container">
-                  <div class="toggle-container">
-                     <span class="toggle-btn active-toggle" id="toggle-hits" data-mode="hits">Hits</span>
-                     <span class="toggle-btn" id="toggle-singles" data-mode="singles">1B</span>
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>WAR Calculator</title>
+      <link rel="stylesheet" href="style.css">
+   </head>
+   <body>
+      <div class="container">
+         <h1>Baseball WAR Calculator</h1>
+         <form id="war-form">
+            <div class="input-section">
+                  <h2>Hitting Stats</h2>
+                  <div class="grid-container">
+                     <div class="toggle-container">
+                        <span class="toggle-btn active-toggle" id="toggle-hits" data-mode="hits">Hits</span>
+                        <span class="toggle-btn" id="toggle-singles" data-mode="singles">1B</span>
+                     </div>
+                     
+                     <div class="smart-input-container">
+                        <label for="hits-singles-input" id="hits-singles-label">Total Hits (H)</label>
+                        <input type="number" id="hits-singles-input" value="0" min="0">
+                     </div>
+
+                     <label for="doubles">Doubles (2B)</label>
+                     <input type="number" id="doubles" value="0" min="0">
+                     <label for="triples">Triples (3B)</label>
+                     <input type="number" id="triples" value="0" min="0">
+                     <label for="homeruns">Home Runs (HR)</label>
+                     <input type="number" id="homeruns" value="0" min="0">
+                     <label for="walks">Walks (BB)</label>
+                     <input type="number" id="walks" value="0" min="0">
+                     <label for="hbp">Hit By Pitch (HBP)</label>
+                     <input type="number" id="hbp" value="0" min="0">
+                     <label for="atbats">At Bats (AB)</label>
+                     <input type="number" id="atbats" value="0" min="0">
+                     <label for="sacflies">Sacrifice Flies (SF)</label>
+                     <input type="number" id="sacflies" value="0" min="0">
                   </div>
-                  
-                  <div class="smart-input-container">
-                     <label for="hits-singles-input" id="hits-singles-label">Total Hits (H)</label>
-                     <input type="number" id="hits-singles-input" value="0" min="0">
+            </div>
+
+            <div class="input-section">
+                  <h2>Baserunning & Advanced Stats</h2>
+                  <div class="grid-container">
+                     <label for="sb">Stolen Bases (SB)</label>
+                     <input type="number" id="sb" value="0" min="0">
+                     <label for="cs">Caught Stealing (CS)</label>
+                     <input type="number" id="cs" value="0" min="0">
+                     <label for="ubr">UBR (Advanced Baserunning)</label>
+                     <input type="number" id="ubr" value="0">
+                     <label for="drs">Defensive Runs (DRS)</label>
+                     <input type="number" id="drs" value="0">
+                     <label for="uzr">Defensive Runs (UZR)</label>
+                     <input type="number" id="uzr" value="0">
+                     <label for="pos">Primary Position</label>
+                     <select id="pos">
+                        <option value="C">Catcher (C)</option>
+                        <option value="1B">First Base (1B)</option>
+                        <option value="2B">Second Base (2B)</option>
+                        <option value="3B">Third Base (3B)</option>
+                        <option value="SS">Shortstop (SS)</option>
+                        <option value="LF">Left Field (LF)</option>
+                        <option value="CF">Center Field (CF)</option>
+                        <option value="RF">Right Field (RF)</option>
+                        <option value="DH">Designated Hitter (DH)</option>
+                     </select>
                   </div>
+            </div>
+            
+            <button type="button" id="calculate-btn">Calculate</button>
+         </form>
 
-                  <label for="doubles">Doubles (2B)</label>
-                  <input type="number" id="doubles" value="0" min="0">
-                  <label for="triples">Triples (3B)</label>
-                  <input type="number" id="triples" value="0" min="0">
-                  <label for="homeruns">Home Runs (HR)</label>
-                  <input type="number" id="homeruns" value="0" min="0">
-                  <label for="atbats">At Bats (AB)</label>
-                  <input type="number" id="atbats" value="0" min="0">
-                  <label for="walks">Walks (BB)</label>
-                  <input type="number" id="walks" value="0" min="0">
-                  <label for="hbp">Hit By Pitch (HBP)</label>
-                  <input type="number" id="hbp" value="0" min="0">
-                  <label for="sacflies">Sacrifice Flies (SF)</label>
-                  <input type="number" id="sacflies" value="0" min="0">
-               </div>
+         <div id="results" class="results-section">
+            <h2>Results</h2>
+            <p>OBP: <span id="obp-result">---</span></p>
+            <p>SLG: <span id="slg-result">---</span></p>
+            <p>OPS: <span id="ops-result">---</span></p>
+            <p><strong>bWAR:</strong> <span id="bwar-result">---</span></p>
+            <p><strong>fWAR:</strong> <span id="fwar-result">---</span></p>
          </div>
-
-         <div class="input-section">
-               <h2>Baserunning & Advanced Stats</h2>
-               <div class="grid-container">
-                  <label for="sb">Stolen Bases (SB)</label>
-                  <input type="number" id="sb" value="0" min="0">
-                  <label for="cs">Caught Stealing (CS)</label>
-                  <input type="number" id="cs" value="0" min="0">
-                  <label for="def">Defensive Runs (DRS)</label>
-                  <input type="number" id="def" value="0">
-                  <label for="ubr">UBR (Advanced Baserunning)</label>
-                  <input type="number" id="ubr" value="0">
-                  <label for="pos">Primary Position</label>
-                  <select id="pos">
-                     <option value="C">Catcher (C)</option>
-                     <option value="1B">First Base (1B)</option>
-                     <option value="2B">Second Base (2B)</option>
-                     <option value="3B">Third Base (3B)</option>
-                     <option value="SS">Shortstop (SS)</option>
-                     <option value="LF">Left Field (LF)</option>
-                     <option value="CF">Center Field (CF)</option>
-                     <option value="RF">Right Field (RF)</option>
-                     <option value="DH">Designated Hitter (DH)</option>
-                  </select>
-               </div>
-         </div>
-         
-         <button type="button" id="calculate-btn">Calculate</button>
-      </form>
-
-      <div id="results" class="results-section">
-         <h2>Results</h2>
-         <p>OBP: <span id="obp-result">---</span></p>
-         <p>SLG: <span id="slg-result">---</span></p>
-         <p>OPS: <span id="ops-result">---</span></p>
-         <p><strong>fWAR:</strong> <span id="war-result">---</span></p>
       </div>
-   </div>
-   <script src="main.js"></script>
-</body>
+      <script src="main.js"></script>
+   </body>
 </html>
