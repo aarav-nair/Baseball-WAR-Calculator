@@ -62,8 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const ops = obp + slg;
 
       // Common Components for WAR
-      const wOBA_SCALE = 1.25;
-      const LG_WOBA = 0.315;
+      const wOBA_SCALE = 1.242;
+      const LG_WOBA = 0.310;
       const wOBA = ((0.7 * (inputs.BB + inputs.HBP)) + (0.9 * inputs['1B']) + (wOBA_SCALE * inputs['2B']) + (1.6 * inputs['3B']) + (2.0 * inputs.HR)) / PA;
       const battingRuns = ((wOBA - LG_WOBA) / wOBA_SCALE) * PA;
       const wSB = (inputs.SB * 0.2) - (inputs.CS * 0.4);
